@@ -142,3 +142,14 @@ Ext.define('MVC.store.User', {
         {firstName: 'Zed', lastName: 'Zacharias'}
     ]
 });
+
+
+Ext.define('MVC.store.UserSettings', {
+    extend   : 'Ext.data.Store',
+    model    : 'MVC.model.UserSettings',
+    autoLoad:true,
+    sorters: 'id',
+    data: [
+        {text: 'View Users', id : 1}
+    ]
+});

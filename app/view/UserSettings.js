@@ -1,28 +1,28 @@
-Ext.define('MVC.view.UserList', {
+Ext.define('MVC.view.UserSettings', {
     extend : 'Ext.dataview.List',
-    xtype : 'userlist',
-    alias : 'widget.userlist',
+    xtype : 'usersettings',
+    alias : 'widget.usersettings',
     config : {
         scrollable : true,
         allowDeselect: true,
         disclosure: true,
-        grouped: true,
-        indexBar: true,
+        grouped: false,
+        indexBar: false,
         preventSelectionOnDisclose :true,
         items :[{
             xtype : 'navigationbar',
             docked   : 'top',
             ui : 'dark',
-            title : 'User List',
+            title : 'User Settings',
             items :[{
-                ui : 'back decline',
-                itemId : 'userlistbackbtn',
+                ui : 'decline',
+                itemId : 'logoutbtn',
                 align : 'left',
-                text : 'Back'
+                text : 'Logout'
             }]
         }],
         //emptyText : '<div class="emptyText">No User Found</div>',
-        itemTpl: '{firstName} {lastName}',
+        itemTpl: '{text}',
         singleSelect: true
     },
     initialize : function() {

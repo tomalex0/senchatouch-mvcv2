@@ -1,10 +1,12 @@
 Ext.define('MVC.controller.User', {
     extend : 'Ext.app.Controller',
     views : [
-        'UserList'
+        'UserList',
+        'UserSettings'
     ],
     stores : [
-        'User'
+        'User',
+        'UserSettings'
     ],
     refs : [
         {
@@ -24,13 +26,15 @@ Ext.define('MVC.controller.User', {
         });
     },
     getNewView : function(){
-        var me = this,userStore = this.getStore('User');
+        var me = this,userStore = this.getStore('UserSettings');
         
-        me.userview = me.getView('UserList').create({
+        me.userview = me.getView('UserSettings').create({
             store : userStore
         });
         me.userview.on('disclose',function(rec){
-            alert(rec.get('firstName')+" "+rec.get('lastName'))
+            var tabcontroller = me.getController('UserTab');
+            newview = tabcontroller.getNewView(),viewportcontroller = me.getController('Viewport');
+            viewportcontroller.doNavigation(newview,forward_dir);
         });
         
         return me.userview;

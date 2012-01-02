@@ -5,3 +5,11 @@ Ext.define('MVC.model.User', {
         'lastName'
     ]
 });
+
+Ext.define('MVC.model.UserSettings', {
+    extend : 'Ext.data.Model',
+    fields :  [
+        'text',
+        'id'
+    ]
+});

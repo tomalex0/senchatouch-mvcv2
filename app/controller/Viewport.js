@@ -7,10 +7,13 @@ Ext.define('MVC.controller.Viewport', {
         }
     ],
     init : function() {
-        var me = this,
-        controller = this.getController('Login'),
-        newview = controller.getNewView();
+        console.log(this);
         
+        var me = this,
+        controller = this.getApplication().getController('Login');
+        console.log(this.getApplication().getController('Login'));
+        newview = controller.getNewView();
+        console.log(controller);
         me.doNavigation(newview);
     },
     doNavigation : function(newView,anim) {

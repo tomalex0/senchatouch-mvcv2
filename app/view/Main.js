@@ -1,6 +1,6 @@
-Ext.define('MVC.view.Viewport', {
+Ext.define('MVC.view.Main', {
     extend: 'Ext.Container',
-    xtype : 'cdaviewport',
+    xtype : 'mainpanel',
     config: {
         fullscreen: true,
         scrollable : false,

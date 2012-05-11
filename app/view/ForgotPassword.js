@@ -18,7 +18,7 @@ Ext.define('MVC.view.ForgotPassword', {
             centered : true,
             margin : '0 35 0 0',
             defaults: {
-                labelWidth : 40,  
+                labelWidth : 80
             },
             items :[{
                 xtype : 'emailfield',
@@ -26,12 +26,12 @@ Ext.define('MVC.view.ForgotPassword', {
                 name  : 'email'
             }]
         },{
-            xtype : 'navigationbar',
+            xtype : 'titlebar',
             docked   : 'bottom',
             items:[{
                 text : 'Reset Password',
                 ui : 'decline',
-                itemId : 'reset',
+                itemId : 'resetbtn',
                 align : 'right'
             }]
         }]

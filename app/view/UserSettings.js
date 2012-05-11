@@ -1,16 +1,16 @@
 Ext.define('MVC.view.UserSettings', {
-    extend : 'Ext.dataview.List',
+    extend : 'Ext.List',
     xtype : 'usersettings',
-    alias : 'widget.usersettings',
+    
     config : {
         scrollable : true,
         allowDeselect: true,
-        disclosure: true,
+        onItemDisclosure : true,
         grouped: false,
         indexBar: false,
         preventSelectionOnDisclose :true,
         items :[{
-            xtype : 'navigationbar',
+            xtype : 'titlebar',
             docked   : 'top',
             ui : 'dark',
             title : 'User Settings',

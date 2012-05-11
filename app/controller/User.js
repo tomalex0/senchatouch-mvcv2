@@ -1,47 +1,56 @@
 Ext.define('MVC.controller.User', {
-    extend : 'Ext.app.Controller',
-    views : [
-        'UserList',
-        'UserSettings'
-    ],
-    stores : [
-        'User',
-        'UserSettings'
-    ],
-    refs : [
-        {
-            ref      : 'logoutButton',
-            selector : '[itemId="logoutbtn"]'
-        }
-    ],
-    init : function(){
-        var me = this;
-        this.control({
-            // Back button
-            '[itemId="logoutbtn"]' : {
-                tap : function(){
-                    this.logoutNav();
-                }
+    extend: 'Ext.app.Controller',
+
+    config: {
+        routes: {
+            'logout': 'logoutNav',
+            'usersettings': 'showUserSettings'
+        },
+
+        refs: {
+            logoutButton: {
+                selector: '[itemId="logoutbtn"]'
+            },
+            userSettings: {
+                selector: 'usersettings',
+                xtype: 'usersettings'
             }
-        });
+        },
+        control: {
+            logoutButton: {
+                tap: "logoutNav"
+            },
+            userSettings: {
+                disclose: "userSettingsNav"
+            }
+        }
+
     },
-    getNewView : function(){
-        var me = this,userStore = this.getStore('UserSettings');
-        
-        me.userview = me.getView('UserSettings').create({
-            store : userStore
+    getNewView: function () {
+        var me = this;
+        Ext.create('MVC.view.UserSettings', {
+            store: Ext.getStore('UserSettings'),
+            disclosure: true
         });
-        me.userview.on('disclose',function(rec){
-            var tabcontroller = me.getController('UserTab');
-            newview = tabcontroller.getNewView(),viewportcontroller = me.getController('Viewport');
-            viewportcontroller.doNavigation(newview,forward_dir);
-        });
-        
-        return me.userview;
+
+        return me.getUserSettings();
     },
-    logoutNav : function(){
-        controller = this.getController('Login'),
-        newview = controller.getNewView(),viewportcontroller = this.getController('Viewport');
-        viewportcontroller.doNavigation(newview,backward_dir);
+    showUserSettings: function (anim) {
+        var me = this, newview = me.getNewView(),
+        viewportcontroller = me.getApplication().getController('Main');
+        viewportcontroller.doNavigation(newview, anim || global_anim);
+    },
+    userSettingsNav: function () {
+        var me = this, viewportcontroller = me.getApplication().getController('Main');
+        global_anim = forward_dir;
+        viewportcontroller.appRedirect('userlist');
+
+        
+    },
+    logoutNav: function () {
+
+        var me = this, viewportcontroller = me.getApplication().getController('Main');
+        global_anim = backward_dir;
+        viewportcontroller.appRedirect('login');
     }
 });

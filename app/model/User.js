@@ -3,7 +3,8 @@ Ext.define('MVC.model.User', {
     config :{
         fields :  [
             'firstName',
-            'lastName'
+            'lastName',
+            'id'
         ]   
     }
 });

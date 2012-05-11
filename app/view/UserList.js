@@ -1,16 +1,15 @@
 Ext.define('MVC.view.UserList', {
     extend : 'Ext.dataview.List',
     xtype : 'userlist',
-    alias : 'widget.userlist',
     config : {
         scrollable : true,
         allowDeselect: true,
-        disclosure: true,
+        onItemDisclosure : true,
         grouped: true,
         indexBar: true,
         preventSelectionOnDisclose :true,
         items :[{
-            xtype : 'navigationbar',
+            xtype : 'titlebar',
             docked   : 'top',
             ui : 'dark',
             title : 'User List',

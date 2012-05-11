@@ -6,7 +6,7 @@ Ext.define('MVC.view.Maps', {
        scope : this,
        scrollable : true,
        items :[{
-          xtype : 'navigationbar',
+          xtype : 'titlebar',
           docked   : 'top',
           ui : 'dark',
           title : 'Maps',

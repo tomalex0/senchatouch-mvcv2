@@ -1,46 +1,43 @@
 Ext.define('MVC.controller.ForgotPassword', {
     extend : 'Ext.app.Controller',
-    views : [
-        'ForgotPassword'
-    ],
-    refs : [
-        {
-            ref      : 'resetButton',
-            selector : '[itemId="reset"]'
+    config: {
+        routes: {
+            'forgot': 'forgotView'
         },
-        {
-            ref      : 'loginButton',
-            selector : '[itemId="backtologinbtn"]'
-        }
-    ],
-    init : function(){
-        var me = this;
-        this.control({
-            // Back button
-            '[itemId="reset"]' : {
-                tap : function(){
-                    this.resettNav();
-                }
+        refs: {
+            loginPanel: 'loginpanel',
+            resetButton: {
+                selector : '[itemId="resetbtn"]'
             },
-            // Nav button
-            '[itemId="backtologinbtn"]' : {
-                tap : function(){
-                    this.loginNav();
-                }
+            loginButton: {
+                selector : '[itemId="backtologinbtn"]'
             }
-        });
+        },
+        control: {
+            resetButton: {
+                tap: "resetNav"
+            },
+            loginButton: {
+                tap: "loginNav"
+            }
+        }
+        
     },
     getNewView : function(){
         var me = this;
-        me.view = me.getView('ForgotPassword').create();
+        me.view = Ext.create('MVC.view.ForgotPassword');
         return me.view;
     },
-    resettNav : function(){
-        console.log("forgotNav");
+    forgotView : function(anim){
+        var controller = this.getApplication().getController('ForgotPassword'),
+        newview = controller.getNewView(),viewportcontroller = this.getApplication().getController('Main');
+        viewportcontroller.doNavigation(newview, anim || global_anim);
+    },
+    resetNav : function(){
+        console.log("resetNav");
     },
     loginNav : function(){
-        controller = this.getController('Login'),
-        newview = controller.getNewView(),viewportcontroller = this.getController('Viewport');
-        viewportcontroller.doNavigation(newview,backward_dir);
+        controller = this.getApplication().getController('Login'),
+        newview = controller.loginView(forward_dir);
     }
 });

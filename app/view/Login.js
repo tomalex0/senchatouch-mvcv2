@@ -1,6 +1,6 @@
 Ext.define('MVC.view.Login', {
    extend : 'Ext.form.Panel',
-    xtype : 'login',
+    xtype : 'loginpanel',
     config : {
         scrollable : true,
         items :[{
@@ -12,7 +12,7 @@ Ext.define('MVC.view.Login', {
             centered : true,
             margin : '0 35 0 0',
             defaults: {
-                labelWidth : 60,  
+                labelWidth : 100
             },
             items :[{
                 xtype : 'textfield',
@@ -24,12 +24,12 @@ Ext.define('MVC.view.Login', {
                 name  : 'password'
             }]
         },{
-            xtype : 'navigationbar',
+            xtype : 'titlebar',
             docked   : 'bottom',
             items:[{
                 text : 'Forgot Password',
                 ui : 'decline',
-                itemId : 'forgot',
+                itemId : 'forgotbtn',
                 align : 'left'
             },{
                 text : 'Login',

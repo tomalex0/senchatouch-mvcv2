@@ -6,7 +6,7 @@ Ext.define('MVC.view.EditUser', {
         scope : this,
         scrollable : true,
         items :[{
-            xtype : 'navigationbar',
+            xtype : 'titlebar',
             ui : 'light',
             docked   : 'top',
             title: 'Edit User',
